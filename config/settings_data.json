@@ -16,9 +16,9 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "Welcome to our store 2",
-              "color_scheme": "background-1",
-              "link": ""
+              "text": "50% OFF All Converse",
+              "color_scheme": "inverse",
+              "link": "shopify:\/\/collections\/converse"
             }
           }
         },
