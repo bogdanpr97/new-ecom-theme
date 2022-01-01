@@ -17,7 +17,8 @@
             "type": "announcement",
             "settings": {
               "text": "50% OFF All Converse",
-              "color_scheme": "inverse",
+              "background_color": "#000000",
+              "announcement_text_color": "#ffffff",
               "link": "shopify:\/\/collections\/converse"
             }
           }
