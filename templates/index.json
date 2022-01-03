@@ -17,6 +17,10 @@
     "16412326339d137b25": {
       "type": "collection-group",
       "settings": {
+        "collection": "men",
+        "background": "#000000",
+        "products_to_show": 3,
+        "text_alignment": "left"
       }
     }
   },
