@@ -1,0 +1,155 @@
+<div class="hero hero2">
+  <div class="hero2__collection1">
+    {%- if section.settings.image_left != blank -%}
+      <img
+        class="hero2__bg"
+        srcset="{%- if section.settings.image_left.width >= 165 -%}{{ section.settings.image_left | img_url: '165x' }} 165w,{%- endif -%}
+          {%- if section.settings.image_left.width >= 360 -%}{{ section.settings.image_left | img_url: '360x' }} 360w,{%- endif -%}
+          {%- if section.settings.image_left.width >= 535 -%}{{ section.settings.image_left | img_url: '535x' }} 535w,{%- endif -%}
+          {%- if section.settings.image_left.width >= 750 -%}{{ section.settings.image_left | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.image_left.width >= 1070 -%}{{ section.settings.image_left | img_url: '1070x' }} 1070w,{%- endif -%}
+          {%- if section.settings.image_left.width >= 1500 -%}{{ section.settings.image_left | img_url: '1500x' }} 1500w,{%- endif -%}
+          {{ section.settings.image_left | img_url: 'master' }} {{ section.settings.image_left.width }}w"
+        src="{{ section.settings.image_left | img_url: '1500x' }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+        alt="{{ section.settings.image_left.alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.image_left.width }}"
+        height="{{ section.settings.image_left.height }}"
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+    {% assign opacity = section.settings.background_opacity | divided_by: 100.00 %}
+    <div class="hero2__content-container" style="background-color:{{ section.settings.background | color_modify: 'alpha', opacity }};">
+      <div class="hero2__info">
+        {%- if section.settings.button_label_left != blank -%}
+          <a 
+            {% if section.settings.button_link_left == blank %} role="link" aria-disabled="true"
+            {% else %} href="{{ section.settings.button_link_left }}"{% endif %} 
+            class="hero2__button"
+          >
+            {{ section.settings.button_label_left | escape }}
+          </a>
+        {%- endif -%} 
+      </div>
+    </div>
+  </div>
+  <div class="hero2__collection2">
+    {%- if section.settings.image_right != blank -%}
+      <img
+        class="hero2__bg"
+        srcset="{%- if section.settings.image_right.width >= 165 -%}{{ section.settings.image_right | img_url: '165x' }} 165w,{%- endif -%}
+          {%- if section.settings.image_right.width >= 360 -%}{{ section.settings.image_right | img_url: '360x' }} 360w,{%- endif -%}
+          {%- if section.settings.image_right.width >= 535 -%}{{ section.settings.image_right | img_url: '535x' }} 535w,{%- endif -%}
+          {%- if section.settings.image_right.width >= 750 -%}{{ section.settings.image_right | img_url: '750x' }} 750w,{%- endif -%}
+          {%- if section.settings.image_right.width >= 1070 -%}{{ section.settings.image_right | img_url: '1070x' }} 1070w,{%- endif -%}
+          {%- if section.settings.image_right.width >= 1500 -%}{{ section.settings.image_right | img_url: '1500x' }} 1500w,{%- endif -%}
+          {{ section.settings.image_right | img_url: 'master' }} {{ section.settings.image_right.width }}w"
+        src="{{ section.settings.image_right | img_url: '1500x' }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+        alt="{{ section.settings.image_right.alt | escape }}"
+        loading="lazy"
+        width="{{ section.settings.image_right.width }}"
+        height="{{ section.settings.image_right.height }}"
+      >
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+    {% assign opacity = section.settings.background_opacity | divided_by: 100.00 %}
+    <div class="hero2__content-container" style="background-color:{{ section.settings.background | color_modify: 'alpha', opacity }};">
+      <div class="hero2__info">
+        {%- if section.settings.button_label_right != blank -%}
+          <a 
+            {% if section.settings.button_link_right == blank %} role="link" aria-disabled="true"
+            {% else %} href="{{ section.settings.button_link_right }}"{% endif %} 
+            class="hero2__button"
+          >
+            {{ section.settings.button_label_right | escape }}
+          </a>
+        {%- endif -%} 
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Two",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Image Left"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Image Right"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Image Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "min": 0,
+      "max": 70,
+      "step": 1,
+      "label": "Background Color Opacity",
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "info_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right",
+      "label": "Info Alignment"
+    },
+    {
+      "type": "text",
+      "id": "button_label_left",
+      "default": "Button label left",
+      "label": "Button Label Left"
+    },
+    {
+      "type": "url",
+      "id": "button_link_left",
+      "label": "Button Url Left"
+    },
+    {
+      "type": "text",
+      "id": "button_label_right",
+      "default": "Button label Right",
+      "label": "Button label Right"
+    },
+    {
+      "type": "url",
+      "id": "button_link_right",
+      "label": "Button Link Right"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Two"
+    }
+  ]
+}
+{% endschema %}

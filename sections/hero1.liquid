@@ -1,5 +1,3 @@
-{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
-
 <div class="hero hero1 hero1--aligned-{{ section.settings.info_alignment }}">
   {%- if section.settings.image != blank -%}
     <img
@@ -21,11 +19,29 @@
   {%- else -%}
     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
   {%- endif -%}
-  <div class="hero1__content-container">
+  {% assign opacity = section.settings.background_opacity | divided_by: 100.00 %}
+  <div class="hero1__content-container" style="background-color:{{ section.settings.background | color_modify: 'alpha', opacity }};">
     <div class="hero1__info">
-      <h1 class="hero1__title">{{ section.settings.header_text }}</h1>
-      <p class="hero1__paragraph">{{ section.settings.under_header_text }}</p>
-      <a href="{{ section.settings.button_link}}" class="hero1__button">View More</a>
+      {%- for block in section.blocks -%}
+          {% case block.type %}
+            {%- when 'heading' -%}
+              <h1 class="hero1__title" {{ block.shopify_attributes }}>
+                {{ block.settings.title | escape }}
+              </h1>
+            {%- when 'paragraph' -%}
+             <p class="hero1__paragraph" {{ block.shopify_attributes }}>{{ block.settings.paragraph | escape }}</p>
+            {%- when 'button' -%}
+              {%- if block.settings.button_label != blank -%}
+                <a 
+                  {% if block.settings.button_link == blank %} role="link" aria-disabled="true"
+                  {% else %} href="{{ block.settings.button_link }}"{% endif %} 
+                  class="hero1__button"
+                >
+                  {{ block.settings.button_label | escape }}
+                </a>
+              {%- endif -%} 
+          {%- endcase -%}
+        {%- endfor -%}
     </div>
   </div>
   <h1>Hero 1</h1>
@@ -42,21 +58,19 @@
       "label": "t:sections.image-with-text.settings.image.label"
     },
     {
-      "type": "text",
-      "id": "header_text",
-      "label": "Header Text",
-      "default": "Welcome to our store"
+      "type": "color",
+      "id": "background",
+      "label": "Image Background Color",
+      "default": "#000000"
     },
     {
-      "type": "textarea",
-      "id": "under_header_text",
-      "label": "Under Header Text",
-      "default": "I'm baby kogi cardigan kitsch hammock banjo. Typewriter viral man braid hot chicken, farm-to-table fashion axe intelligentsia lomo green juice ramps irony succulents."
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "View More"
+      "type": "range",
+      "id": "background_opacity",
+      "min": 0,
+      "max": 70,
+      "step": 1,
+      "label": "Background Color Opacity",
+      "default": 50
     },
     {
       "type": "select",
@@ -77,124 +91,6 @@
       ],
       "default": "right",
       "label": "Info Alignment"
-    },
-    {
-      "type": "select",
-      "id": "desktop_image_width",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.options__1.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.options__2.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.options__3.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.image-with-text.settings.desktop_image_width.label",
-      "info": "t:sections.image-with-text.settings.desktop_image_width.info"
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "image_first",
-          "label": "t:sections.image-with-text.settings.layout.options__1.label"
-        },
-        {
-          "value": "text_first",
-          "label": "t:sections.image-with-text.settings.layout.options__2.label"
-        }
-      ],
-      "default": "image_first",
-      "label": "t:sections.image-with-text.settings.layout.label",
-      "info": "t:sections.image-with-text.settings.layout.info"
-    },
-    {
-      "type": "select",
-      "id": "desktop_content_position",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:sections.image-with-text.settings.desktop_content_position.options__1.label"
-        },
-        {
-          "value": "middle",
-          "label": "t:sections.image-with-text.settings.desktop_content_position.options__2.label"
-        },
-        {
-          "value": "bottom",
-          "label": "t:sections.image-with-text.settings.desktop_content_position.options__3.label"
-        }
-      ],
-      "default": "top",
-      "label": "t:sections.image-with-text.settings.desktop_content_position.label"
-    },
-    {
-      "type": "select",
-      "id": "desktop_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__1.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__2.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__3.label"
-        }
-      ],
-      "default": "left",
-      "label": "t:sections.image-with-text.settings.desktop_content_alignment.label"
-    },
-    {
-      "type": "select",
-      "id": "content_layout",
-      "options": [
-        {
-          "value": "no-overlap",
-          "label": "t:sections.image-with-text.settings.content_layout.options__1.label"
-        },
-        {
-          "value": "overlap",
-          "label": "t:sections.image-with-text.settings.content_layout.options__2.label"
-        }
-      ],
-      "default": "no-overlap",
-      "label": "t:sections.image-with-text.settings.content_layout.label"
-    },
-    {
-      "type": "header",
-      "content": "Mobile layout"
-    },
-    {
-      "type": "select",
-      "id": "mobile_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.image-with-text.settings.mobile_content_alignment.options__1.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.image-with-text.settings.mobile_content_alignment.options__2.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.image-with-text.settings.mobile_content_alignment.options__3.label"
-        }
-      ],
-      "default": "left",
-      "label": "t:sections.image-with-text.settings.mobile_content_alignment.label"
     }
   ],
   "blocks": [
@@ -205,29 +101,9 @@
       "settings": [
         {
           "type": "text",
-          "id": "heading",
-          "default": "Image with text",
-          "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
-        },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "t:sections.image-with-text.blocks.heading.settings.heading_size.options__1.label"
-            },
-            {
-              "value": "h1",
-              "label": "t:sections.image-with-text.blocks.heading.settings.heading_size.options__2.label"
-            },
-            {
-              "value": "h0",
-              "label": "t:sections.image-with-text.blocks.heading.settings.heading_size.options__3.label"
-            }
-          ],
-          "default": "h1",
-          "label": "t:sections.image-with-text.blocks.heading.settings.heading_size.label"
+          "id": "title",
+          "default": "Title",
+          "label": "Title"
         }
       ]
     },
@@ -281,30 +157,15 @@
       ]
     },
     {
-      "type": "text",
-      "name": "t:sections.image-with-text.blocks.text.name",
+      "type": "paragraph",
+      "name": "Paragraph",
       "limit": 1,
       "settings": [
         {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-          "label": "t:sections.image-with-text.blocks.text.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__1.label"
-            },            {
-              "value": "subtitle",
-              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__2.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.image-with-text.blocks.text.settings.text_style.label" 
+          "type": "textarea",
+          "id": "paragraph",
+          "label": "Text",
+          "default": "I'm baby kogi cardigan kitsch hammock banjo. Typewriter viral man braid hot chicken, farm-to-table fashion axe intelligentsia lomo green juice ramps irony succulents."
         }
       ]
     },
@@ -336,7 +197,7 @@
           "type": "heading"
         },
         {
-          "type": "text"
+          "type": "paragraph"
         },
         {
           "type": "button"
