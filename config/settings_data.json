@@ -9,6 +9,8 @@
     "colors_background_2": "#F3F3F3",
     "type_header_font": "assistant_n4",
     "type_body_font": "assistant_n4",
+    "social_twitter_link": "https:\/\/twitter.com\/shopify",
+    "social_facebook_link": "https:\/\/facebook.com\/shopify",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -34,7 +36,8 @@
         "settings": {
           "header_type": "header1",
           "logo": "shopify:\/\/shop_images\/logo_transparent.png",
-          "menu": "main-menu"
+          "menu": "main-menu",
+          "menu_two": "main-menu"
         }
       },
       "footer": {
@@ -44,29 +47,27 @@
             "type": "link_list",
             "settings": {
               "heading": "Quick links",
-              "menu": "footer"
+              "menu": "main-menu"
             }
           },
-          "footer-1": {
-            "type": "text",
+          "c95b51f8-6403-4801-a45c-721778657ed9": {
+            "type": "link_list",
             "settings": {
-              "heading": "Heading",
-              "subtext": "<p>Share store details, promotions, or brand content with your customers.<\/p>"
+              "heading": "Menu",
+              "menu": "footer"
             }
           }
         },
         "block_order": [
           "footer-0",
-          "footer-1"
+          "c95b51f8-6403-4801-a45c-721778657ed9"
         ],
         "settings": {
-          "color_scheme": "background-1",
+          "footer_description": "Lorem Ipsum",
           "newsletter_enable": true,
           "newsletter_heading": "Subscribe to our emails",
           "show_social": false,
-          "enable_country_selector": true,
-          "enable_language_selector": true,
-          "payment_enable": true
+          "footer_menu": "footer"
         }
       }
     },
@@ -133,7 +134,6 @@
             "text"
           ],
           "settings": {
-            "color_scheme": "accent-1"
           }
         }
       }
