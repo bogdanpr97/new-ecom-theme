@@ -1,4 +1,4 @@
-<div class="hero hero1 hero1--aligned-{{ section.settings.info_alignment }}">
+<div class="hero hero1 hero1--aligned-{{ section.settings.info_alignment }} height-{{ section.settings.hero_height }}">
   {%- if section.settings.image != blank -%}
     <img
       class="hero1__bg"
@@ -56,6 +56,26 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "hero_height",
+      "label": "Hero Height",
+      "options": [
+        {
+          "value": "50",
+          "label": "50%"
+        },
+        {
+          "value": "75",
+          "label": "75%"
+        },
+        {
+          "value": "100",
+          "label": "100%"
+        }
+      ],
+      "default": "100"
     },
     {
       "type": "color",

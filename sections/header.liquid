@@ -1,6 +1,6 @@
 
 <header class="header header2 header2__logo-{{ section.settings.logo_position }} ">
-  <h1 class="header__heading" id="logo">
+  <h1 class="header__heading" id="logo" style="width: 100%;">
     <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
       {%- if section.settings.logo != blank -%}
         {%- assign image_size = section.settings.logo_width | append: 'x' -%}
@@ -50,15 +50,6 @@
   </div>
   
 </header>
-
-<style>
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    transition: all 0.5s ease;
-    }
-</style>
 
 <script>
   const bodyTag = document.getElementsByTagName('body')[0];
