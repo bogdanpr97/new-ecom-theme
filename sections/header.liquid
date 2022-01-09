@@ -17,26 +17,26 @@
       {%- endif -%}
     </a>
   </h1>
-  <div class="header2__collections-nav" id="nav">
+  <ul class="header2__collections-nav" id="nav">
     {%- if section.settings.menu != blank -%}
       {%- for link in section.settings.menu.links -%}
         {%- if link.links == blank -%}
-          <a href="{{ link.url }}" class="header2__collection-link">{{ link.title | escape }}</a>
+          <li class="header1__collection-link">
+            <a href="{{ link.url }}">{{ link.title | escape }}</a>
+          </li>
         {% else %}
-            <a  class="header2__collection-link" href"{{ link.url }}">{{ link.title | escape }}
-              <i class="fas fa-chevron-down"></i>
+          <li class="header2__collection-link">
+            <a href="{{ link.url }}">{{ link.title | escape }} <i class="fas fa-chevron-down"></i></a>
             <ul class="collection-link__sub-links">
-              {% for childlink in link.links %}
-                <li>
-                  <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
-                </li>
-              {% endfor %}
+              {%- for childlink in link.links -%}
+              <li><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+              {%- endfor -%}
             </ul>
-          </a>
+          </li>
         {% endif %}
       {% endfor %}
     {% endif %}
-  </div>
+  </ul>
   
   <div class="header2__collections-nav" id="links">
     <a href="{{ routes.cart_url }}">

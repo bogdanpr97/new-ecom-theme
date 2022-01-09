@@ -1,4 +1,4 @@
-<div class="hero hero2">
+<div class="hero hero2 height-{{ section.settings.hero_height }}">
   <div class="hero2__collection1">
     {%- if section.settings.image_left != blank -%}
       <img
@@ -22,7 +22,17 @@
     {%- endif -%}
     {% assign opacity = section.settings.background_opacity | divided_by: 100.00 %}
     <div class="hero2__content-container" style="background-color:{{ section.settings.background | color_modify: 'alpha', opacity }};">
-      <div class="hero2__info">
+      <div class="hero2__info align-{{ section.settings.left_container_align }} justify-{{ section.settings.left_container_justify }}">
+        {% if section.settings.title_left != blank %}
+          <div class="hero2__title">
+            {{ section.settings.title_left }}
+          </div>
+        {% endif %}
+          {% if section.settings.paragraph_left != blank %}
+            <div class="hero2__paragraph">
+              {{ section.settings.paragraph_left }}
+            </div>
+        {% endif %}
         {%- if section.settings.button_label_left != blank -%}
           <a 
             {% if section.settings.button_link_left == blank %} role="link" aria-disabled="true"
@@ -58,7 +68,18 @@
     {%- endif -%}
     {% assign opacity = section.settings.background_opacity | divided_by: 100.00 %}
     <div class="hero2__content-container" style="background-color:{{ section.settings.background | color_modify: 'alpha', opacity }};">
-      <div class="hero2__info">
+      <div class="hero2__info align-{{ section.settings.right_container_align }} justify-{{ section.settings.right_container_justify }}">
+        {% if section.settings.title_right != blank %}
+          <div class="hero2__title">
+            {{ section.settings.title_right }}
+          </div>
+        {% endif %}
+        {% if section.settings.paragraph_right != blank %}
+          <div class="hero2__paragraph">
+            {{ section.settings.paragraph_right }}
+          </div>
+      {% endif %}
+       
         {%- if section.settings.button_label_right != blank -%}
           <a 
             {% if section.settings.button_link_right == blank %} role="link" aria-disabled="true"
@@ -89,6 +110,130 @@
       "label": "Image Right"
     },
     {
+      "type": "text",
+      "id": "title_left",
+      "default": "Column",
+      "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_left",
+      "default": "Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.",
+      "label": "t:sections.multicolumn.blocks.column.settings.text.label"
+    },
+    {
+      "type": "text",
+      "id": "title_right",
+      "default": "Column",
+      "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_right",
+      "default": "Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.",
+      "label": "t:sections.multicolumn.blocks.column.settings.text.label"
+    },
+    {
+      "type": "select",
+      "id": "hero_height",
+      "label": "Hero Height",
+      "options": [
+        {
+          "value": "50",
+          "label": "50%"
+        },
+        {
+          "value": "75",
+          "label": "75%"
+        },
+        {
+          "value": "100",
+          "label": "100%"
+        }
+      ],
+      "default": "100"
+    },
+    {
+      "type": "select",
+      "id": "left_container_align",
+      "label": "Left Continer Align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "right_container_align",
+      "label": "Right Continer Align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "left_container_justify",
+      "label": "Left Container Justify",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+    "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "right_container_justify",
+      "label": "Right Container Justify",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
       "type": "color",
       "id": "background",
       "label": "Image Background Color",
@@ -102,26 +247,6 @@
       "step": 1,
       "label": "Background Color Opacity",
       "default": 50
-    },
-    {
-      "type": "select",
-      "id": "info_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "right",
-      "label": "Info Alignment"
     },
     {
       "type": "text",
