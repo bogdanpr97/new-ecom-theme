@@ -3,14 +3,15 @@
     <div class="row">
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
       <div class="col-4">
+        {% assign opacity = section.settings.opacity | divided_by: 100.00 %}
         <div class="collection1__collection-item">
           <div class="collection1__product-img">
-            <div class="collection1__heart">
+            <div class="collection1__heart" style="z-index: 10;">
               <i class="fas fa-cart-plus"></i>
             </div>
-              <a href="{{ product.url }}" style="display: flex; justify-content: center; width: 70%;">
+              <a href="{{ product.url }}" style="display: flex; justify-content: center; background-color: {{ section.settings.background | color_modify: 'alpha', opacity }}">
                 <img
-                  srcset="{%- if product.images[0].width >= 165 -%}{{ product.images[0] | img_url: '165x' }} 165w,{%- endif -%}
+                srcset="{%- if product.images[0].width >= 165 -%}{{ product.images[0] | img_url: '165x' }} 165w,{%- endif -%}
                     {%- if product.images[0].width >= 360 -%}{{ product.images[0] | img_url: '360x' }} 360w,{%- endif -%}
                     {%- if product.images[0].width >= 535 -%}{{ product.images[0] | img_url: '535x' }} 535w,{%- endif -%}
                     {%- if product.images[0].width >= 750 -%}{{ product.images[0] | img_url: '750x' }} 750w,{%- endif -%}
@@ -67,25 +68,20 @@
       "label": "t:sections.featured-collection.settings.products_to_show.label"
     },
     {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "Text Aligment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left"
-    },
+			"type": "color",
+			"id": "background",
+			"label": "Background",
+			"default": "#FFFFFF"
+		},
+		{
+			"type": "range",
+			"id": "opacity",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"label": "Color Opacity",
+			"default": 100
+		},
     {
       "type": "select",
       "id": "image_fit",

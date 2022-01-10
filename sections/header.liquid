@@ -57,6 +57,7 @@
   var sticky = headerWrapper.offsetTop;
 
   if(bodyTag.classList.contains('fixed-nav')) {
+      headerWrapper.style.zIndex = '20';
       function onScroll() {
       if (window.pageYOffset > sticky) {
         headerWrapper.classList.add("sticky");
