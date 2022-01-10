@@ -2,11 +2,11 @@
   <div class="container">
     <div class="row">
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-      <div class="col-md-4">
+      <div class="col-4">
         <div class="collection1__collection-item">
           <div class="collection1__product-img">
             <div class="collection1__heart">
-              <i class="far fa-heart"></i>
+              <i class="fas fa-cart-plus"></i>
             </div>
               <a href="{{ product.url }}" style="display: flex; justify-content: center; width: 70%;">
                 <img
@@ -34,15 +34,11 @@
                   {{ product.title }}
                 </span>
               {% endif %}
-             {% if section.settings.show_price == true %}
+              {% if section.settings.show_price == true %}
                 <span class="collection1__product-price">
                   ${{ product.price }}
                 </span>
               {% endif %}
-            </div>
-            <div class="collection1__colors">
-              <div class="collection1__color collection1__color--blue"></div>
-              <div class="collection1__color collection1__color--black"></div>
             </div>
           </div>
         </div>

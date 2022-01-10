@@ -17,10 +17,10 @@
 <footer class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-9">
         <div class="row">
           {% for block in section.blocks %}
-            <div class="col-md-2">
+            <div class="col-2">
               <div class="footer__links">
                 <span class="footer__column-title">{{ block.settings.heading }}</span>
                 {% for link in block.settings.menu.links %}
@@ -33,7 +33,7 @@
           {% endfor %}   
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-3">
         <div class="footer__extra">
           {% if section.settings.newsletter_enable == true %}
             <span class="footer__column-title">
@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <div class="footer__bottom">
           <div class="footer__copyright">
             &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}  All Rights Reserved

@@ -1,5 +1,27 @@
 {
   "sections": {
+    "164168659267836818": {
+      "type": "hero2",
+      "settings": {
+        "image_left": "shopify:\/\/shop_images\/stylish-man-in-bow-tie.jpg",
+        "image_right": "shopify:\/\/shop_images\/model-in-sunglasses-and-summer-clothes.jpg",
+        "title_left": "",
+        "paragraph_left": "Visit us and see our new men outfits",
+        "title_right": "",
+        "paragraph_right": "Visit us and see our new women outfits",
+        "hero_height": "100",
+        "left_container_align": "center",
+        "right_container_align": "center",
+        "left_container_justify": "end",
+        "right_container_justify": "end",
+        "background": "#000000",
+        "background_opacity": 36,
+        "button_label_left": "Men",
+        "button_link_left": "shopify:\/\/collections\/men",
+        "button_label_right": "Women",
+        "button_link_right": "shopify:\/\/collections\/women"
+      }
+    },
     "16416516532bf51262": {
       "type": "hero1",
       "blocks": {
@@ -35,9 +57,33 @@
         "background_opacity": 4,
         "info_alignment": "right"
       }
+    },
+    "1641686875e7d31ccf": {
+      "type": "hero2",
+      "settings": {
+        "image_left": "shopify:\/\/shop_images\/self-serve-coffee-shop.jpg",
+        "image_right": "shopify:\/\/shop_images\/for-you-shelf.jpg",
+        "title_left": "Visit Us",
+        "paragraph_left": "You can find us in the city center",
+        "title_right": "Join Us",
+        "paragraph_right": "Looking to emply new people. Are you ready for something new?",
+        "hero_height": "50",
+        "left_container_align": "start",
+        "right_container_align": "start",
+        "left_container_justify": "start",
+        "right_container_justify": "start",
+        "background": "#000000",
+        "background_opacity": 50,
+        "button_label_left": "Contact",
+        "button_link_left": "",
+        "button_label_right": "Upload CV",
+        "button_link_right": ""
+      }
     }
   },
   "order": [
-    "16416516532bf51262"
+    "164168659267836818",
+    "16416516532bf51262",
+    "1641686875e7d31ccf"
   ]
 }

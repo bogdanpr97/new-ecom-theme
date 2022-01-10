@@ -1,0 +1,56 @@
+<div class="text-section text-align-{{ section.settings.text_align }}">
+  <div class="container">
+    <div class="text-section__title">
+      {{ section.settings.title }}
+    </div>
+    <div class="text-section__paragraph">
+      {{ section.settings.paragraph }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Text Delimiter",
+    "class": "text-delimiter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Title"
+      },
+      {
+        "type": "text",
+        "id": "paragraph",
+        "label": "Paragraph",
+        "default": "Paragraph"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Text Delimiter"
+      }
+    ]
+  }
+{% endschema %}
